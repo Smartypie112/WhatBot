@@ -13,7 +13,7 @@
 				<div class="profile">
 					<div class="left">
 						<img src="img/pp.png" class="pp">
-						<h2>Elias</h2>
+						<h2>WhatBot</h2>
 						<span>online</span>
 					</div>
 					<div class="right">
@@ -25,13 +25,13 @@
   <div class="product-card">
     
     <div class="product-header">
-      <img src="img/headphone.png" alt="Product">
-      <span class="price">225</span>
+
+      <span class="price"></span>
     </div>
 
     <div class="product-body">
       <p class="title">
-        Welcome to <b>Urban Studioz</b> 👋 <br>
+        Welcome to <b>WhatBot</b> 👋 <br>
         <span>Select from the options below</span>
       </p>
       <span class="time">4:31 pm</span>
@@ -88,43 +88,35 @@ function botReply(userText) {
 
   const responseMap = {
     "Product/Service Info": {
-      reply: "Great choice 😊 Here are our latest products.",
+      reply: "Great question 😊  We create<br> smart WhatsApp-style chatbots <br>that automatically reply to your <br>customers, explain your services,<br> share prices, and collect leads<br> — even when you’re offline ⏰🤖",
       card: "product"
     },
     "Price": {
-      reply: "Here’s our pricing details 💰",
+      reply: "Our pricing is simple and <br>affordable 💰  For the first 20 <br>users, the chatbot setup is <br>completely FREE 🎉  After that, <br>it works 24/7 for your business<br> — no extra staff needed.",
       card: "pricing"
     },
     "How it works": {
-      reply: "Here’s how everything works ⚙️",
+      reply: "It’s very simple ⚙️  We design a <br>chatbot based on your business,<br> connect it to WhatsApp or a<br> website, and your customers<br> start getting instant replies<br> automatically.",
       card: "working"
     },
     "Talk to Expert": {
-      reply: "Choose how you'd like to talk with us 👨‍💼",
+      reply: "Sure 👨‍💼  Choose how you’d like to <br>connect with our expert and <br>get personalised guidance <br>for your business.",
       card: "experttalk"
     },
     "Just Browsing": {
-      reply: "No worries 😊 Take a look around!",
+      reply: "No problem at all 😊  Feel free to <br>explore how our chatbot <br>works. I’m here if you need <br>any help.",
       card: "main"
     },
     "What's Included": {
-      reply: "Here’s what’s included in our service 📦",
+      reply: "Here’s what you get with our<br> chatbot service 📦<br>  ✔ Custom chatbot design <br> ✔ Business-specific replies <br> ✔ Lead collection <br> ✔ WhatsApp or website <br>integration  <br>✔ Easy future updates",
       card: "Included"
     },
     "Ask anything else": {
-      reply: "Sure! What would you like to ask? 🤔",
+      reply: "Of course 🤔  You can ask anything about the chatbot, pricing, setup,<br> or support. I’m happy to help!",
       card: "somethingelse"
     },
     "Not Interested": {
-      reply: "No problem 😊 Have a great day!",
-      card: null
-    },
-    "Phone Call": {
-      reply: "Our expert will call you shortly 📞",
-      card: null
-    },
-    "WhatsApp Chat (Recomended)": {
-      reply: "Redirecting you to WhatsApp 💬",
+      reply: "No worries at all 😊  Thanks for <br>your time. If you ever need <br>automation for your business, <br>we’ll be here!",
       card: null
     }
   };
@@ -140,8 +132,22 @@ function botReply(userText) {
         scrollBottom();
       }, 1000);
     }
-  } else {
-    reply = "Connecting you to a support agent 👨‍💻";
+  } 
+  else if (userText === "WhatsApp Chat (Recommended)") {
+    reply = "Redirecting you to WhatsApp 💬";
+  setTimeout(() => {
+    window.open(
+      "https://wa.me/919999999999?text=Hi%20I%20want%20to%20know%20about%20your%20chatbot%20service",
+      "_blank"
+    );
+  }, 1200);
+} else if (userText === "Phone Call") {
+  reply = "Call on this Number";
+  setTimeout(() => {
+    window.location.href = "tel:919999999999";
+  }, 1200);
+} else {
+    reply = "";
   }
 
   const botMsg = `
@@ -189,7 +195,7 @@ function optionsCard(type = "main") {
     options: [
       "What's Included",
       "Talk to Expert",
-      "Ask something else",
+      "Ask anything else",
       "Not Interested"
     ]
   },
