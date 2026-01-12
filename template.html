@@ -87,46 +87,7 @@ function botReply(userText) {
   let cardType = null;
 
   const responseMap = {
-    "Product/Service Info": {
-      reply: "Great choice 😊 Here are our latest products.",
-      card: "product"
-    },
-    "Price": {
-      reply: "Here’s our pricing details 💰",
-      card: "pricing"
-    },
-    "How it works": {
-      reply: "Here’s how everything works ⚙️",
-      card: "working"
-    },
-    "Talk to Expert": {
-      reply: "Choose how you'd like to talk with us 👨‍💼",
-      card: "experttalk"
-    },
-    "Just Browsing": {
-      reply: "No worries 😊 Take a look around!",
-      card: "main"
-    },
-    "What's Included": {
-      reply: "Here’s what’s included in our service 📦",
-      card: "Included"
-    },
-    "Ask anything else": {
-      reply: "Sure! What would you like to ask? 🤔",
-      card: "somethingelse"
-    },
-    "Not Interested": {
-      reply: "No problem 😊 Have a great day!",
-      card: null
-    },
-    "Phone Call": {
-      reply: "Our expert will call you shortly 📞",
-      card: null
-    },
-    "WhatsApp Chat (Recomended)": {
-      reply: "Redirecting you to WhatsApp 💬",
-      card: null
-    }
+    //Here responseMap
   };
 
   const response = responseMap[userText];
@@ -162,76 +123,7 @@ function botReply(userText) {
 
 function optionsCard(type = "main") {
   const cards = {
-  main: {
-    title: "How can we help you today? 👇",
-    options: [
-      "Product/Service Info",
-      "Price",
-      "How it works",
-      "Talk to Expert",
-      "Just Browsing"
-    ]
-  },
-
-  product: {
-    title: "What would you like to know next? 🤔",
-    options: [
-      "How it works",
-      "Price",
-      "Talk to Expert",
-      "Ask anything else",
-      "Not Interested"
-    ]
-  },
-
-  pricing: {
-    title: "Let’s give you more clarity.",
-    options: [
-      "What's Included",
-      "Talk to Expert",
-      "Ask something else",
-      "Not Interested"
-    ]
-  },
-
-  working: {
-    title: "Let's proceed further.",
-    options: [
-      "Product/Service Info",
-      "Price",
-      "Talk to Expert",
-      "Ask anything else",
-      "Not Interested"
-    ]
-  },
-
-  experttalk: {
-    title: "Connect with an expert 📞💬",
-    options: [
-      "Phone Call",
-      "WhatsApp Chat (Recommended)"
-    ]
-  },
-
-  somethingelse: {
-    title: "What else can we help you with? 😊",
-    options: [
-      "Talk to Expert",
-      "Product/Service Info",
-      "How it works",
-      "Price"
-    ]
-  },
-
-  Included: {
-    title: "Let's proceed further.",
-    options: [
-      "Talk to Expert",
-      "Ask anything else",
-      "How it works",
-      "Price"
-    ]
-  }
+  //Here Cards
 };
 
   const card = cards[type] || cards.main;

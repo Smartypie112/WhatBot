@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chatbot Script Builder</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CHAT CONTAINER */
+.container {
+  width: 100%;
+  max-width: 420px;
+  height: 90vh;
+  background: #e5ddd5;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.chat-header {
+  background: #075e54;
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pp {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile span {
+  font-size: 12px;
+  color: #c7f0d8;
+}
+
+/* CHAT BODY */
+.chat-body {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+/* SCROLLBAR */
+.chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+/* MESSAGE WRAPPER */
+.chat-l {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* BOT MESSAGE */
+.chat-l .mess {
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 10px 10px 10px 0;
+  max-width: 80%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.chat-l .mess p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #111827;
+}
+
+/* TIME */
+.check {
+  text-align: right;
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* SPACE FIX */
+.sp {
+  flex: 1;
+}
+
+/* OPTIONS CARD */
+.product-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease;
+}
+
+/* CARD BODY */
+.product-body {
+  padding: 12px 14px;
+  background: #f0fdf4;
+  border-bottom: 1px solid #dcfce7;
+}
+
+.product-body p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* CARD ACTIONS */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-actions button {
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f172a;
+  transition: background 0.2s, color 0.2s;
+}
+
+.product-actions button:hover {
+  background: #dcfce7;
+  color: #065f46;
+}
+
+/* FOOTER */
+.chat-footer {
+  padding: 8px;
+  text-align: center;
+  background: #f8fafc;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ANIMATION */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .container {
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+</style>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+<div class="max-w-7xl mx-auto px-4 py-10">
+
+  <!-- PAGE HEADER -->
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-extrabold text-white">
+      🤖 Chatbot Flow Builder
+    </h1>
+    <p class="text-gray-300 mt-2">
+      Build chatbot responses & cards visually – no coding needed
+    </p>
+  </div>
+
+  <!-- BUILDER GRID -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- Response Builder -->
+    <div class="bg-white/90 backdrop-blur-xl p-6 rounded-2xl shadow-2xl">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-blue-600 text-xl">➕</span>
+        <h2 class="text-xl font-bold text-gray-800">
+          Bot Response
+        </h2>
+      </div>
+
+      <label class="text-sm font-medium text-gray-600">User Option</label>
+      <input id="userText"
+        class="w-full mt-1 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+        placeholder="e.g. Price">
+
+      <label class="text-sm font-medium text-gray-600 mt-4 block">Bot Reply</label>
+      <input id="botReply"
+        class="w-full mt-1 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+        placeholder="e.g. Here’s our pricing details 💰">
+
+      <label class="text-sm font-medium text-gray-600 mt-4 block">Next Card</label>
+      <input id="cardType"
+        class="w-full mt-1 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+        placeholder="pricing (optional)">
+
+      <button onclick="addResponse()"
+        class="mt-6 w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+        Save Response
+      </button>
+    </div>
+
+    <!-- Card Builder -->
+    <div class="bg-white/90 backdrop-blur-xl p-6 rounded-2xl shadow-2xl">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-green-600 text-xl">🧩</span>
+        <h2 class="text-xl font-bold text-gray-800">
+          Options Card
+        </h2>
+      </div>
+
+      <label class="text-sm font-medium text-gray-600">Card Name</label>
+      <input id="cardName"
+        class="w-full mt-1 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+        placeholder="pricing">
+
+      <label class="text-sm font-medium text-gray-600 mt-4 block">Card Title</label>
+      <input id="cardTitle"
+        class="w-full mt-1 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+        placeholder="Let’s give you more clarity">
+
+      <label class="text-sm font-medium text-gray-600 mt-4 block">Options</label>
+      <textarea id="cardOptions"
+        class="w-full mt-1 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+        rows="4"
+        placeholder="What's Included, Talk to Expert, Not Interested"></textarea>
+
+      <button onclick="addCard()"
+        class="mt-6 w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+        Save Card
+      </button>
+    </div>
+
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="mt-12 bg-black/90 text-green-400 p-6 rounded-2xl shadow-2xl">
+    <div class="flex items-center gap-2 mb-3">
+      <span>📄</span>
+      <h2 class="text-lg font-bold text-green-300">
+        Generated Script
+      </h2>
+    </div>
+
+    <pre id="output"
+      class="text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed"></pre>
+  </div>
+
+</div>
+
+<script >
+  const responseMap = {};
+const cards = {};
+
+function addResponse() {
+  const userText = document.getElementById("userText").value;
+  const reply = document.getElementById("botReply").value;
+  const card = document.getElementById("cardType").value || null;
+
+  responseMap[userText] = { reply, card };
+  renderOutput();
+}
+
+function addCard() {
+  const name = document.getElementById("cardName").value;
+  const title = document.getElementById("cardTitle").value;
+  const options = document.getElementById("cardOptions")
+    .value.split(",")
+    .map(o => o.trim());
+
+  cards[name] = { title, options };
+  renderOutput();
+}
+
+function renderOutput() {
+  document.getElementById("output").textContent =
+`// RESPONSE MAP
+const responseMap = ${JSON.stringify(responseMap, null, 2)};
+
+// CARDS
+const cards = ${JSON.stringify(cards, null, 2)};
+`;
+}
+</script>
+</body>
+</html>
