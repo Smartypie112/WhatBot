@@ -7,6 +7,7 @@
 .container {
 	width: 100vw;
 	margin: auto;
+	margin: 0;
 }
 .chat {
 	display: flex;
@@ -49,9 +50,8 @@
 }
 .profile span {
 	color: #ccc;
-	position: absolute;
-	top: 42px;
-	left: 75px;
+	position: relative;
+	left: -75px;
 	font-size: 14px;
 }
 .right .icon {
