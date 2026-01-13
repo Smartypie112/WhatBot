@@ -3,53 +3,6 @@
 	margin: 0;
 	font-family: sans-serif;
 }
-.chat {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	width:100vw;
-	background: #f1f0e8;
-}
-.chat-header {
-	display: flex;
-	cursor: pointer;
-}
-.profile {
-	width: 100%;
-	background: #036055;
-	display: flex;
-	align-items: center;
-	height: 8vh;
-	padding: 0px 10px;
-	position: relative;
-	margin-left: 15px;
-}
-.profile .pp {
-	width: 50px;
-	display: inline-block;
-	border-radius: 50%;
-}
-.profile h2 {
-	display: inline-block;
-	line-height: 60px;
-	vertical-align: bottom;
-	color: #fff;
-	font-size: 20px;
-}
-.profile span {
-	color: #ccc;
-	position: relative;
-	left: -75px;
-	font-size: 14px;
-}
-.right .icon {
-	display: inline-block;
-	width: 25px;
-	margin-left: 10px;
-}
-.profile .left {
-	flex: 1;
-}
 
 .chat-box {
 	background: url('../img/bg.jpeg');
