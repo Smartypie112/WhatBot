@@ -7,7 +7,7 @@
 .container {
 	width: 100vw;
 	margin: auto;
-	margin: 0;
+	margin: 0 !important; 
 }
 .chat {
 	display: flex;
