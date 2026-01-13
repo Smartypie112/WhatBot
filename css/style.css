@@ -1,13 +1,7 @@
 *{
 	padding: 0;
 	margin: 0;
-	box-sizing: border-box;
 	font-family: sans-serif;
-}
-.container {
-	width: 60vw;
-	margin: auto;
-	margin: 0 !important; 
 }
 .chat {
 	display: flex;
@@ -27,19 +21,12 @@
 	height: 8vh;
 	padding: 0px 10px;
 	position: relative;
+	margin-left: 15px;
 }
 .profile .pp {
 	width: 50px;
 	display: inline-block;
 	border-radius: 50%;
-	margin-left: 15px;
-}
-.profile .arrow {
-	display: inline-block;
-	width: 30px;
-	position: absolute;
-	top: 19px;
-	cursor: pointer;
 }
 .profile h2 {
 	display: inline-block;
